@@ -26,7 +26,6 @@ const place_holder = [
 ];
 
 const max_list = 8;
-const ETH_PRICE = 4207.42
 
 const FloorRow = Styled.div`
   width: 342px;
@@ -56,6 +55,8 @@ const FloorBox = Styled.div`
 
 function App() {
 
+  const [ethPrice, setETHprice] = useState(0.00);
+
   const [pudgyPrice, setPudgyPrice] = useState(place_holder);
   const [coolCatsPrice, setCoolCatsPrice] = useState(place_holder);
   const [KIAPrice, setKIAPrice] = useState(place_holder);
@@ -64,7 +65,15 @@ function App() {
   const [MAYCPrice, setMAYCprice] = useState(place_holder);
 
   function getFloorPrice(floor_value) {
-    return ((floor_value * ETH_PRICE).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    return ((floor_value * ethPrice).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+  }
+
+  async function getETHPrice() {
+    fetch("https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd")
+      .then(res => res.json())
+      .then(data => {
+        setETHprice(data.ethereum.usd);
+      })
   }
 
   useEffect(() => {
@@ -97,6 +106,7 @@ function App() {
           setDataPrice([...price_data].sort((b, a) => b.price - a.price));
         });
     }
+    getETHPrice();
     getInfo(pudgy_url, setPudgyPrice);
     getInfo(KIA_url, setKIAPrice);
     getInfo(cool_cats_url, setCoolCatsPrice);
@@ -110,7 +120,7 @@ function App() {
       <div Style="padding: 30px;">
         <div>
           <h1 Style="margin-bottom: 20px;"> NFT Scalpers Dream</h1>
-          <p Style="margin-bottom: 20px;"> ETH Price : $4,207.42</p>
+          <p Style="margin-bottom: 20px;"> ETH Price : ${ethPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} </p>
 
           <Button style={{ minWidth: '112px' }} mr={5} size="large" variant="outlined"> ETH </Button>
           <Button style={{ minWidth: '112px' }} mr={5} size="large" variant="outlined"> MATIC </Button>
@@ -177,7 +187,7 @@ function App() {
               <h3> Test: ${getFloorPrice(data.price)} </h3>
             ))}
             {BAYCPrice.slice(0, max_list).map((data) => (
-              <p> ID: #{data.id} -> Price : {data.price}</p>
+              <p> ID: <a href={"https://opensea.io/assets/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/" + data.id} > #{data.id} </a> -> Price : {data.price}</p>
             ))}
           </FloorBox>
 
@@ -187,7 +197,7 @@ function App() {
               <h3> Test: ${getFloorPrice(data.price)} </h3>
             ))}
             {MAYCPrice.slice(0, max_list).map((data) => (
-              <p> ID: #{data.id} -> Price : {data.price}</p>
+              <p> ID: <a href={"https://opensea.io/assets/0x60e4d786628fea6478f785a6d7e704777c86a7c6/" + data.id} > #{data.id} </a> -> Price : {data.price}</p>
             ))}
           </FloorBox>
         </FloorRow>
