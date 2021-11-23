@@ -1,8 +1,6 @@
 {
   "name": "random_app",
   "version": "0.1.0",
-  "homepage": "https://nft-scaplers-dream.vercel.app/",
-  "proxy": "https://data.rarity.tools/prices",
   "dependencies": {
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
@@ -23,6 +21,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://nft-scaplers-dream.vercel.app/",
+  "proxy": "https://data.rarity.tools/prices",
   "eslintConfig": {
     "extends": [
       "react-app",
