@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://nft-scaplers-dream.vercel.app",
+  "proxy": "https://rarity.tools",
   "eslintConfig": {
     "extends": [
       "react-app",
