@@ -80,7 +80,9 @@ function App() {
     async function getInfo(url, setDataPrice) {
 
       try {
-        fetch(url)
+        fetch(url, {
+
+        })
           .then(res => res.json())
           .then(rawdata => {
 
