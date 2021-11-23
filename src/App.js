@@ -79,37 +79,39 @@ function App() {
   useEffect(() => {
     async function getInfo(url, setDataPrice) {
 
-      fetch(url, {
-        headers: {
-          'sec-gpc': '1'
-        },
-      })
-        .then(res => res.json())
-        .then(rawdata => {
+      try {
+        fetch(url, {
+          mode: "cors"
+        })
+          .then(res => res.json())
+          .then(rawdata => {
 
-          var price_data = [];
+            var price_data = [];
 
-          for (var i = 1; i < 10000; i++) {
-            var number = i.toString();
+            for (var i = 1; i < 10000; i++) {
+              var number = i.toString();
 
-            if (rawdata.prices[number]) {
+              if (rawdata.prices[number]) {
 
-              var data_id = number;
-              var data_price = rawdata.prices[number][1];
+                var data_id = number;
+                var data_price = rawdata.prices[number][1];
 
-              var new_object = {
-                id: data_id,
-                price: data_price
-              };
+                var new_object = {
+                  id: data_id,
+                  price: data_price
+                };
 
-              price_data.push(new_object);
+                price_data.push(new_object);
+              }
             }
-          }
 
-          console.log(price_data);
-          setDataPrice(price_data);
-          setDataPrice([...price_data].sort((b, a) => b.price - a.price));
-        });
+            console.log(price_data);
+            setDataPrice(price_data);
+            setDataPrice([...price_data].sort((b, a) => b.price - a.price));
+          });
+      } catch (err) {
+        console.log(err);
+      };
     }
     getETHPrice();
     getInfo(pudgy_url, setPudgyPrice);
