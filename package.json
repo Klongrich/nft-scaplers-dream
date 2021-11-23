@@ -2,6 +2,7 @@
   "name": "random_app",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://rarity.tools",
   "dependencies": {
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
@@ -22,7 +23,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://rarity.tools",
   "eslintConfig": {
     "extends": [
       "react-app",
