@@ -7,12 +7,12 @@ import { spacing } from '@mui/system';
 
 const Button = styled(MuiButton)(spacing);
 
-const pudgy_url = "/prices/pudgypenguins";
-const cool_cats_url = "/prices/cool-cats-nft";
-const KIA_url = "/prices/koala-intelligence-agency";
-const sappy_seal_url = "/prices/sappy-seals";
-const BAYC_url = "/prices/boredapeyachtclub";
-const MAYC_url = "/prices/mutant-ape-yacht-club";
+const pudgy_url = "https://data.rarity.tools/prices/pudgypenguins";
+const cool_cats_url = "https://data.rarity.tools/prices/cool-cats-nft";
+const KIA_url = "https://data.rarity.tools/prices/koala-intelligence-agency";
+const sappy_seal_url = "https://data.rarity.tools/prices/sappy-seals";
+const BAYC_url = "https://data.rarity.tools/prices/boredapeyachtclub";
+const MAYC_url = "https://data.rarity.tools/prices/mutant-ape-yacht-club";
 
 const place_holder = [
   {
@@ -80,9 +80,7 @@ function App() {
     async function getInfo(url, setDataPrice) {
 
       try {
-        fetch(url, {
-          mode: "cors"
-        })
+        fetch(url)
           .then(res => res.json())
           .then(rawdata => {
 
