@@ -78,10 +78,10 @@ function App() {
 
   useEffect(() => {
     async function getInfo(url, setDataPrice) {
+
       fetch(url, {
-        credentials: 'same-origin',
-        header: {
-          'Access-Control-Allow-Origin': '*',
+        headers: {
+          'sec-gpc': '1'
         },
       })
         .then(res => res.json())
