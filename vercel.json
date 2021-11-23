@@ -1,7 +1,7 @@
 {
     "headers": [
         {
-            "source": "/*.chunk.js",
+            "source": "/*.js",
             "headers": [
                 {
                     "key": "Access-Control-Allow-Credentials",
