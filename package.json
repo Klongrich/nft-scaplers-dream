@@ -2,8 +2,7 @@
   "name": "random_app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nft-scaplers-dream.vercel.app/",
-  "proxy": "https://data.rarity.tools/",
+  "proxy": "https://data.rarity.tools/prices",
   "dependencies": {
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
