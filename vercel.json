@@ -1,7 +1,7 @@
 {
     "headers": [
         {
-            "source": "/api/(.*)",
+            "source": "https://data.rarity.tools/(.*)",
             "headers": [
                 {
                     "key": "Access-Control-Allow-Credentials",
