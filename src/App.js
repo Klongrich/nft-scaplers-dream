@@ -80,7 +80,11 @@ function App() {
     async function getInfo(url, setDataPrice) {
 
       try {
-        fetch(url)
+        fetch(url, {
+          headers: {
+            'origin': 'https://rarity.tools'
+          },
+        })
           .then(res => res.json())
           .then(rawdata => {
 
